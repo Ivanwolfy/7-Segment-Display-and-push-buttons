@@ -43,11 +43,6 @@ void delay(unsigned int length_ms)
 
 void SevenSegment(uint8_t count,uint8_t dp, uint8_t dec_hex)
 {
-/* This function shows value of count on display the decimal point is displayed if dp = 1
-Note:
-count must be less than 10 for decimal, or less than 16 for Hex. */
-   //if(count <dec_hex)
-   //{
       switch (count)
       {
          case 0:
@@ -114,22 +109,8 @@ count must be less than 10 for decimal, or less than 16 for Hex. */
 			 PTC->PDOR = 0x71;		//F in for h,g,f,e,d,c,b,a Cathode configuration
          break;
       }
-      //if(dp)
-      //{
-         //if decimal point should be displayed make DP bit Low
-         //PORT_7_SEGMENT&=0b11110111;
-    	//  PTC->PSOR = MASK(Segment_dot);
-      //}
    }
-   //else
-   //{
-      //This symbol on display shows that count was greater than 9 or 15
-      //so display can't handle it
 
-      //PORT_7_SEGMENT=0b11011111;
-	 // PTC->PSOR = MASK(Segment_dot);
-   //}
-//}
 
 int main(void)
 {
