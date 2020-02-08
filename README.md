@@ -1,5 +1,5 @@
 # FRDM-KL25Z, 7-segment-display-and-switches
-Board: FRDM-KL25Z
+Board: FRDM-KL25Z.
 Material needed:
  - 7 segment display, Cathode commun.
  - 4 Push buttons or switches.
