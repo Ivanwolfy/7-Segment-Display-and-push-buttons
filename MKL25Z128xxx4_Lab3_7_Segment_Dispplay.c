@@ -139,7 +139,7 @@ int main(void)
 			// Enable Clock to port A
 			SIM->SCGC5 |= SIM_SCGC5_PORTC_MASK | SIM_SCGC5_PORTB_MASK;
 			// Make GPIO
-			/*PORTC->PCR[Segment_a] &= ~PORT_PCR_MUX_MASK;
+			PORTC->PCR[Segment_a] &= ~PORT_PCR_MUX_MASK;
 			PORTC->PCR[Segment_a] |= PORT_PCR_MUX(1);
 			PORTC->PCR[Segment_b] &= ~PORT_PCR_MUX_MASK;
 			PORTC->PCR[Segment_b] |= PORT_PCR_MUX(1);
@@ -154,13 +154,22 @@ int main(void)
 			PORTC->PCR[Segment_g] &= ~PORT_PCR_MUX_MASK;
 			PORTC->PCR[Segment_g] |= PORT_PCR_MUX(1);
 			PORTC->PCR[Segment_dot] &= ~PORT_PCR_MUX_MASK;
-			PORTC->PCR[Segment_dot] |= PORT_PCR_MUX(1);*/
+			PORTC->PCR[Segment_dot] |= PORT_PCR_MUX(1);
+			PORTB->PCR[0] = ~PORT_PCR_MUX_MASK;
+			PORTB->PCR[0] = PORT_PCR_MUX(1);
+			PORTB->PCR[1] = ~PORT_PCR_MUX_MASK;
+			PORTB->PCR[1] = PORT_PCR_MUX(1);
+			PORTB->PCR[2] = ~PORT_PCR_MUX_MASK;
+			PORTB->PCR[2] = PORT_PCR_MUX(1);
+			PORTB->PCR[3] = ~PORT_PCR_MUX_MASK;
+			PORTB->PCR[3] = PORT_PCR_MUX(1);
 			// set LEDs bits to outputs
-			//PTC->PDDR |= MASK(Segment_a) | MASK(Segment_b)| MASK(Segment_c)| MASK(Segment_d)| MASK(Segment_e)| MASK(Segment_f)| MASK(Segment_g)| MASK(Segment_dot);
+			PTC->PDDR |= MASK(Segment_a) | MASK(Segment_b)| MASK(Segment_c)| MASK(Segment_d)| MASK(Segment_e)| MASK(Segment_f)| MASK(Segment_g)| MASK(Segment_dot);
 			PTB->PDDR = 0x00;
 			while (1)
 			{
 				SevenSegment(count,0, dec_hex);
+				delay(2000);
 				if(PTB->PDIR == 0x00)
 					{
 					count = 0;
@@ -226,10 +235,4 @@ int main(void)
 					count = 15;
 					}
 			}
-			//count++;
-			/*if(count==dec_hex)
-					      {
-					      count=0;
-					      }*/
-			delay(1000); //1 seg
 }
